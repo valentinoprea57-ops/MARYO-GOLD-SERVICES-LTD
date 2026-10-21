@@ -3,128 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maryo Gold Services LTD | Book Private Hire</title>
+    <title>Maryo Gold Services LTD | Executive Private Hire & Airport Transfers</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-        body {
-            background: linear-gradient(rgba(10, 15, 25, 0.92), rgba(10, 15, 25, 0.96)),
-                        url('https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat fixed;
-            color: #fff;
-            min-height: 100vh;
-            padding-bottom: 90px;
-        }
-
-        header {
-            background: rgba(2, 6, 23, 0.9);
-            padding: 1rem 1.25rem;
-            border-bottom: 1px solid #1e293b;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            backdrop-filter: blur(8px);
-        }
-        .logo { font-size: 1.1rem; font-weight: 700; color: #eab308; text-transform: uppercase; letter-spacing: 1px; }
+        body { background: #0b0f19; color: #f8fafc; line-height: 1.6; }
+        header { background: #020617; padding: 1.2rem 1.5rem; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; flex-wrap: wrap; gap: 0.75rem; }
+        .logo { font-size: 1.2rem; font-weight: 700; color: #eab308; text-transform: uppercase; letter-spacing: 1px; }
         .header-contacts { display: flex; gap: 0.5rem; align-items: center; }
-        .contact-chip { background: #1e293b; color: #cbd5e1; padding: 0.4rem 0.8rem; border-radius: 9999px; text-decoration: none; font-size: 0.78rem; border: 1px solid #334155; }
-        .phone-btn { background: #22c55e; color: #fff; padding: 0.45rem 0.9rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.82rem; }
-
-        .container { max-width: 550px; margin: 0 auto; padding: 1.5rem 1rem; }
-        .step-title { font-size: 0.9rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; margin-bottom: 0.75rem; display: flex; justify-content: space-between; align-items: center; }
-        .available-tag { color: #10b981; font-size: 0.8rem; }
-
-        /* Date Grid */
-        .dates-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; margin-bottom: 1.75rem; }
-        .date-btn {
-            background: #1e293b;
-            border: 1px solid #334155;
-            border-radius: 12px;
-            padding: 0.65rem 0.2rem;
-            text-align: center;
-            color: #fff;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .date-btn .day { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; display: block; opacity: 0.8; }
-        .date-btn .date { font-size: 0.85rem; font-weight: 700; margin-top: 2px; display: block; }
-        .date-btn.active { background: #ef4444; border-color: #ef4444; }
-
-        /* Time Slots Grid */
-        .slots-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin-bottom: 1.75rem; }
-        .slot-btn {
-            background: #1e293b;
-            border: 1px solid #334155;
-            border-radius: 12px;
-            padding: 0.85rem 0.4rem;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #fff;
-            cursor: pointer;
-            text-align: center;
-            transition: 0.2s;
-        }
-        .slot-btn.active { background: #10b981; border-color: #10b981; }
-        .slot-btn.booked {
-            background: #0f172a;
-            border-color: #1e293b;
-            color: #475569;
-            text-decoration: line-through;
-            cursor: not-allowed;
-            opacity: 0.5;
-        }
-
-        .notice-box {
-            background: rgba(30, 41, 59, 0.7);
-            border: 1px solid #334155;
-            padding: 0.75rem 1rem;
-            border-radius: 10px;
-            font-size: 0.85rem;
-            color: #cbd5e1;
-            margin-bottom: 1.75rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        /* Form Details */
-        .form-card { background: rgba(19, 29, 49, 0.85); border: 1px solid #24344d; border-radius: 14px; padding: 1.25rem; margin-bottom: 1.5rem; backdrop-filter: blur(6px); }
-        .form-group { margin-bottom: 1rem; }
-        .form-group label { display: block; font-size: 0.78rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; margin-bottom: 0.35rem; }
-        .form-group input { width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid #334155; background: #0b0f19; color: #fff; font-size: 0.95rem; }
-
-        /* Bottom Floating Bar */
-        .bottom-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: #090d16;
-            border-top: 1px solid #1e293b;
-            padding: 0.75rem 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 600px;
-            margin: 0 auto;
-            z-index: 100;
-        }
-        .summary-text { font-size: 0.8rem; font-weight: 700; color: #cbd5e1; }
-        .summary-price { font-size: 1.1rem; font-weight: 800; color: #eab308; }
-        .whatsapp-submit-btn {
-            background: #10b981;
-            color: #fff;
-            border: none;
-            border-radius: 9999px;
-            padding: 0.75rem 1.2rem;
-            font-size: 0.85rem;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
+        .contact-chip { background: #1e293b; color: #cbd5e1; padding: 0.45rem 0.9rem; border-radius: 9999px; text-decoration: none; font-size: 0.82rem; border: 1px solid #334155; }
+        .phone-btn { background: #22c55e; color: #fff; padding: 0.5rem 1rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.85rem; }
+        .hero { text-align: center; padding: 4rem 1.5rem 2rem; max-width: 800px; margin: 0 auto; }
+        .hero h1 { font-size: 2.2rem; margin-bottom: 1.2rem; color: #ffffff; }
+        .hero p { color: #94a3b8; font-size: 1.1rem; }
+        .section { max-width: 1000px; margin: 3rem auto; padding: 0 1.5rem; }
+        .section h2 { text-align: center; font-size: 1.6rem; margin-bottom: 1.8rem; color: #eab308; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+        .card { background: #131d31; padding: 1.5rem; border-radius: 12px; border: 1px solid #24344d; }
+        .card h3 { margin-bottom: 0.5rem; font-size: 1.15rem; color: #fff; }
+        .card p { color: #94a3b8; font-size: 0.9rem; }
+        .booking-box { background: #131d31; padding: 1.75rem; border-radius: 12px; border: 1px solid #24344d; max-width: 550px; margin: 0 auto; }
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group label { display: block; margin-bottom: 0.4rem; color: #cbd5e1; font-size: 0.85rem; }
+        .form-group input { width: 100%; padding: 0.75rem; border-radius: 6px; border: 1px solid #334155; background: #0b0f19; color: #fff; font-size: 0.95rem; }
+        .btn-gold { background: #eab308; color: #000; border-radius: 8px; font-weight: 600; text-decoration: none; display: inline-block; }
+        footer { text-align: center; padding: 2.5rem 1rem; border-top: 1px solid #1e293b; color: #64748b; font-size: 0.85rem; margin-top: 3rem; }
+        footer a { color: #eab308; text-decoration: none; }
     </style>
 </head>
 <body>
@@ -132,113 +35,71 @@
     <header>
         <div class="logo">Maryo Gold Services</div>
         <div class="header-contacts">
-            <a href="mailto:Syleboe1234@gmail.com" class="contact-chip">✉️ Email</a>
+            <a href="mailto:Syleboe1234@gmail.com" class="contact-chip">✉️ Syleboe1234@gmail.com</a>
             <a href="tel:07367446973" class="phone-btn">📞 Call Now</a>
         </div>
     </header>
 
-    <div class="container">
-        <!-- 1. CHOOSE DATE -->
-        <div class="step-title">1. Choose Date</div>
-        <div class="dates-grid" id="datesContainer"></div>
+    <section class="hero">
+        <h1>Executive Private Hire & Airport Transfers</h1>
+        <p>Reliable, punctual, and comfortable transportation. Nationwide airport transfers, corporate bookings, and long-distance travel across the UK.</p>
+    </section>
 
-        <!-- 2. CHOOSE TIME SLOT -->
-        <div class="step-title">
-            <span>2. Choose Time Slot (Hourly)</span>
-            <span class="available-tag">✓ Available</span>
-        </div>
-        <div class="slots-grid" id="slotsContainer"></div>
-
-        <div class="notice-box">
-            <span>✔ Direct Booking Confirmation</span>
-        </div>
-
-        <!-- 3. CONTACT DETAILS -->
-        <div class="step-title">3. Your Contact & Journey Details</div>
-        <div class="form-card">
-            <div class="form-group">
-                <label>Your Full Name</label>
-                <input type="text" id="custName" placeholder="e.g. John Doe" required>
+    <section class="section">
+        <h2>Our Services</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>✈️ Airport Transfers</h3>
+                <p>Heathrow, Gatwick, Bristol, Birmingham and all UK major airports with on-time flight tracking.</p>
             </div>
-            <div class="form-group">
-                <label>Phone Number</label>
-                <input type="tel" id="custPhone" placeholder="07123 456789" required>
+            <div class="card">
+                <h3>💼 Corporate & Executive</h3>
+                <p>Comfortable, premium transport for business meetings, events, and VIP clients.</p>
             </div>
-            <div class="form-group">
-                <label>Pickup Location / Postcode</label>
-                <input type="text" id="custPickup" placeholder="e.g. Bristol Temple Meads" required>
-            </div>
-            <div class="form-group">
-                <label>Destination / Airport</label>
-                <input type="text" id="custDropoff" placeholder="e.g. Heathrow Terminal 2" required>
+            <div class="card">
+                <h3>🛣️ Long Distance Journeys</h3>
+                <p>Direct door-to-door nationwide transfers without stress or train delays.</p>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Bottom Bar -->
-    <div class="bottom-bar">
-        <div>
-            <div class="summary-text" id="selectedSummary">Select date & time</div>
-            <div class="summary-price">Pay on Service</div>
+    <section class="section">
+        <h2>Request a Journey Quote</h2>
+        <div class="booking-box">
+            <form onsubmit="sendBooking(event)">
+                <div class="form-group">
+                    <label>Pickup Address / Postcode</label>
+                    <input type="text" id="pickup" placeholder="e.g. Bristol City Centre" required>
+                </div>
+                <div class="form-group">
+                    <label>Destination Address / Airport</label>
+                    <input type="text" id="destination" placeholder="e.g. Heathrow Terminal 5" required>
+                </div>
+                <div class="form-group">
+                    <label>Date & Time</label>
+                    <input type="datetime-local" id="datetime" required>
+                </div>
+                <button type="submit" class="btn-gold" style="width: 100%; border: none; cursor: pointer; padding: 0.9rem; font-size: 1rem;">Send Quote via WhatsApp</button>
+            </form>
         </div>
-        <button type="button" class="whatsapp-submit-btn" onclick="submitBooking()">
-            <span>💬 Confirm on WhatsApp</span>
-        </button>
-    </div>
+    </section>
+
+    <footer>
+        <p><strong>Maryo Gold Services LTD</strong></p>
+        <p style="margin: 0.5rem 0;">Direct Email: <a href="mailto:Syleboe1234@gmail.com">Syleboe1234@gmail.com</a> | Tel: <a href="tel:07367446973">07367 446973</a></p>
+        <p>&copy; 2026 Maryo Gold Services LTD. All rights reserved.</p>
+    </footer>
 
     <script>
-        const timeSlots = [
-            "07:00 AM", "08:00 AM", "09:00 AM", 
-            "10:00 AM", "11:00 AM", "12:00 PM", 
-            "01:00 PM", "02:00 PM", "03:00 PM", 
-            "04:00 PM", "05:00 PM", "06:00 PM",
-            "07:00 PM", "08:00 PM", "09:00 PM"
-        ];
-
-        let selectedDate = null;
-        let selectedTime = null;
-
-        // Generate next 10 dates dynamically
-        function generateDates() {
-            const container = document.getElementById('datesContainer');
-            container.innerHTML = '';
-            const daysShort = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
-            const monthsShort = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-
-            for (let i = 0; i < 10; i++) {
-                const d = new Date();
-                d.setDate(d.getDate() + i);
-                const dayName = daysShort[d.getDay()];
-                const dateNum = d.getDate();
-                const monthName = monthsShort[d.getMonth()];
-                const dateKey = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(dateNum).padStart(2,'0')}`;
-
-                const btn = document.createElement('div');
-                btn.className = 'date-btn' + (i === 0 ? ' active' : '');
-                btn.innerHTML = `<span class="day">${dayName}</span><span class="date">${dateNum} ${monthName}</span>`;
-                btn.onclick = () => selectDate(dateKey, btn);
-                container.appendChild(btn);
-
-                if (i === 0) selectedDate = dateKey;
-            }
+        function sendBooking(e) {
+            e.preventDefault();
+            const pickup = document.getElementById('pickup').value;
+            const dest = document.getElementById('destination').value;
+            const dt = document.getElementById('datetime').value;
+            
+            const msg = encodeURIComponent(`Hello! Booking request for Maryo Gold Services:%0A- Pickup: ${pickup}%0A- Destination: ${dest}%0A- Date/Time: ${dt}`);
+            window.open(`https://wa.me/447367446973?text=${msg}`, '_blank');
         }
-
-        function getBookedSlots() {
-            try {
-                return JSON.parse(localStorage.getItem('maryo_booked_slots') || '{}');
-            } catch(e) {
-                return {};
-            }
-        }
-
-        function saveBookedSlot(dateKey, time) {
-            const booked = getBookedSlots();
-            if (!booked[dateKey]) booked[dateKey] = [];
-            if (!booked[dateKey].includes(time)) {
-                booked[dateKey].push(time);
-                localStorage.setItem('maryo_booked_slots', JSON.stringify(booked));
-            }
-        }
-
-        function renderSlots() {
-            const container =
+    </script>
+</body>
+</html>
