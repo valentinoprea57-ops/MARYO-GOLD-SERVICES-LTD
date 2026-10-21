@@ -113,6 +113,7 @@
             color: #fff; 
             font-size: 0.95rem; 
             outline: none;
+            color-scheme: dark;
         }
         .form-group select { cursor: pointer; }
         .form-group input:focus, .form-group select:focus { border-color: #eab308; }
@@ -277,34 +278,55 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label>Flight Number (Optional for airport arrivals)</label>
-                    <input type="text" id="custFlight" placeholder="e.g. BA0245 or EZY6123">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Exact Pickup Time</label>
+                        <input type="time" id="custExactTime" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Flight Number (Optional for airport arrivals)</label>
+                        <input type="text" id="custFlight" placeholder="e.g. BA0245 or EZY6123">
+                    </div>
                 </div>
 
+                <!-- Pickup Address Details -->
                 <div class="form-group">
-                    <label>Pickup Location / Postcode</label>
-                    <input type="text" id="custPickup" placeholder="e.g. Bristol City Centre or BS1 4DJ" required>
-                </div>
-                <div class="form-group">
-                    <label>Destination Address / Airport</label>
-                    <input type="text" id="custDropoff" placeholder="e.g. Heathrow Terminal 2" required>
+                    <label>Pickup: House Number & Street</label>
+                    <input type="text" id="custPickupStreet" placeholder="e.g. 4A Burnham Drive" required>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
+                        <label>Town / City</label>
+                        <input type="text" id="custPickupCity" placeholder="e.g. Bristol" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Postcode</label>
+                        <input type="text" id="custPickupPostcode" placeholder="e.g. BS15 4DY" required>
+                    </div>
+                </div>
+
+                <!-- Destination Address Details -->
+                <div class="form-group">
+                    <label>Destination Address / Airport & Terminal</label>
+                    <input type="text" id="custDropoff" placeholder="e.g. Heathrow Airport Terminal 2" required>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="form-row">
+                    <div class="form-group">
                         <label>Full Name</label>
-                        <input type="text" id="custName" placeholder="e.g. John Doe" required>
+                        <input type="text" id="custName" placeholder="e.g. Valentin Oprea" required>
                     </div>
                     <div class="form-group">
                         <label>Phone Number</label>
-                        <input type="tel" id="custPhone" placeholder="e.g. 07123 456789" required>
+                        <input type="tel" id="custPhone" placeholder="e.g. 07367 446973" required>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label>Email Address</label>
-                    <input type="email" id="custEmail" placeholder="e.g. client@gmail.com" required>
+                    <input type="email" id="custEmail" placeholder="e.g. valentinoprea57@gmail.com" required>
                 </div>
 
                 <div class="payment-info">
@@ -377,6 +399,8 @@
                 } else {
                     btn.onclick = () => {
                         selectedSlot = hour;
+                        // Preia ora aleasa si o seteaza in campul de Exact Time
+                        document.getElementById('custExactTime').value = hour;
                         renderSlots();
                     };
                 }
@@ -394,8 +418,11 @@
             const date = dateInput.value;
             const passengers = document.getElementById('custPassengers').value;
             const luggage = document.getElementById('custLuggage').value;
+            const exactTime = document.getElementById('custExactTime').value;
             const flight = document.getElementById('custFlight').value.trim();
-            const pickup = document.getElementById('custPickup').value.trim();
+            const street = document.getElementById('custPickupStreet').value.trim();
+            const city = document.getElementById('custPickupCity').value.trim();
+            const postcode = document.getElementById('custPickupPostcode').value.trim();
             const dropoff = document.getElementById('custDropoff').value.trim();
             const name = document.getElementById('custName').value.trim();
             const phone = document.getElementById('custPhone').value.trim();
@@ -410,7 +437,8 @@
 
             let msgText = `🚗 *NEW EXECUTIVE PRIVATE HIRE BOOKING*\n\n` +
                           `📅 Date: ${date}\n` +
-                          `⏰ Time: ${selectedSlot}\n` +
+                          `⏰ Time Slot Window: ${selectedSlot}\n` +
+                          `⏱️ Exact Pickup Time: ${exactTime}\n` +
                           `👥 Passengers: ${passengers}\n` +
                           `🧳 Luggage: ${luggage}\n`;
 
@@ -418,11 +446,16 @@
                 msgText += `✈️ Flight No: ${flight}\n`;
             }
 
-            msgText += `📍 Pickup: ${pickup}\n` +
-                       `🏁 Destination: ${dropoff}\n\n` +
-                       `👤 Name: ${name}\n` +
-                       `📞 Phone: ${phone}\n` +
-                       `✉️ Email: ${email}`;
+            msgText += `\n📍 *PICKUP ADDRESS*:\n` +
+                       `🏠 Street: ${street}\n` +
+                       `🏙️ Town/City: ${city}\n` +
+                       `📮 Postcode: ${postcode}\n\n` +
+                       `🏁 *DESTINATION*:\n` +
+                       `📍 ${dropoff}\n\n` +
+                       `👤 *CLIENT DETAILS*:\n` +
+                       `Name: ${name}\n` +
+                       `Phone: ${phone}\n` +
+                       `Email: ${email}`;
 
             const message = encodeURIComponent(msgText);
 
