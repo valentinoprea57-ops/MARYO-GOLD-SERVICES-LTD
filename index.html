@@ -112,4 +112,369 @@
             background: #0b0f19; 
             color: #fff; 
             font-size: 0.95rem; 
+            outline: none;
+            color-scheme: dark;
+        }
+        .form-group select { cursor: pointer; }
+        .form-group input:focus, .form-group select:focus { border-color: #eab308; }
+
+        /* Payment methods badge */
+        .payment-info {
+            background: rgba(11, 15, 25, 0.8);
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            font-size: 0.82rem;
+            color: #94a3b8;
+            margin-top: 1rem;
+            margin-bottom: 1.25rem;
+            text-align: center;
+        }
+
+        .btn-submit {
+            background: #eab308;
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            width: 100%;
+            padding: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-submit:hover { background: #ca8a04; }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25d366;
+            color: #fff;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 28px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        footer { text-align: center; padding: 2.5rem 1rem; border-top: 1px solid #1e293b; color: #64748b; font-size: 0.85rem; margin-top: 3rem; }
+        footer a { color: #eab308; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Maryo Gold Services</div>
+        <div class="header-contacts">
+            <a href="mailto:Syleboe1234@gmail.com" class="contact-chip">✉️ Syleboe1234@gmail.com</a>
+            <a href="tel:+447555447236" class="phone-btn">📞 Call Now</a>
+        </div>
+    </header>
+
+    <!-- BANNER POZA EXACTA DE PE GITHUB -->
+    <div class="hero-banner">
+        <img src="Screenshot_20261021-115401.png" alt="Maryo Gold Services Executive Chauffeur">
+    </div>
+
+    <section class="hero">
+        <h1>Executive Private Hire & Airport Transfers</h1>
+        <p>Reliable, punctual, and comfortable transportation. Nationwide airport transfers, corporate bookings, and long-distance travel across the UK.</p>
+    </section>
+
+    <!-- Services -->
+    <section class="section">
+        <h2>Our Services</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>✈️ Airport Transfers</h3>
+                <p>Heathrow, Gatwick, Bristol, Birmingham and all UK major airports with on-time flight tracking.</p>
+            </div>
+            <div class="card">
+                <h3>💼 Corporate & Executive</h3>
+                <p>Comfortable, premium transport for business meetings, events, and VIP clients.</p>
+            </div>
+            <div class="card">
+                <h3>🛣️ Long Distance Journeys</h3>
+                <p>Direct door-to-door nationwide transfers without stress or train delays.</p>
+            </div>
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="badges-grid">
+            <div class="badge-box">
+                <span class="badge-icon">🛡️</span>
+                <div class="badge-title">Licensed & Insured</div>
+                <div class="badge-desc">Fully compliant UK private hire standards</div>
+            </div>
+            <div class="badge-box">
+                <span class="badge-icon">✈️</span>
+                <div class="badge-title">Flight Monitoring</div>
+                <div class="badge-desc">Free waiting time for flight delays</div>
+            </div>
+            <div class="badge-box">
+                <span class="badge-icon">🏷️</span>
+                <div class="badge-title">Fixed Quotes</div>
+                <div class="badge-desc">Clear pricing with zero hidden surcharges</div>
+            </div>
+            <div class="badge-box">
+                <span class="badge-icon">⭐</span>
+                <div class="badge-title">Premium Comfort</div>
+                <div class="badge-desc">Chauffeur-driven luxury vehicles</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="section">
+        <h2>Book Your Journey</h2>
+        <div class="booking-box">
+            <form onsubmit="handleBooking(event)">
+                
+                <!-- 1. Calendar -->
+                <div class="sub-header">1. Select Date</div>
+                <div class="date-input-wrap">
+                    <input type="date" id="bookingDate" required onchange="onDateChanged()">
+                </div>
+
+                <!-- 2. Time Slots (00:00 to 23:00) -->
+                <div class="sub-header">2. Select Time Slot (24h)</div>
+                <div class="slots-container">
+                    <div class="slots-grid" id="slotsGrid"></div>
+                </div>
+
+                <!-- 3. Client & Vehicle Requirements -->
+                <div class="sub-header">3. Journey Details & Requirements</div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Passengers</label>
+                        <select id="custPassengers">
+                            <option value="1 Passenger">1 Passenger</option>
+                            <option value="2 Passengers">2 Passengers</option>
+                            <option value="3 Passengers">3 Passengers</option>
+                            <option value="4 Passengers">4 Passengers</option>
+                            <option value="5-7 Passengers (Executive Van)">5 - 7 Passengers (Executive Van)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Luggage (Large Cases)</label>
+                        <select id="custLuggage">
+                            <option value="Hand luggage only">Hand luggage only</option>
+                            <option value="1 - 2 Large Suitcases">1 - 2 Large Suitcases</option>
+                            <option value="3 - 4 Large Suitcases">3 - 4 Large Suitcases</option>
+                            <option value="5+ Suitcases">5+ Suitcases</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Flight Number (Optional for airport arrivals)</label>
+                    <input type="text" id="custFlight" placeholder="e.g. BA0245 or EZY6123">
+                </div>
+
+                <!-- Pickup Address Details -->
+                <div class="form-group">
+                    <label>Pickup: House Number & Street</label>
+                    <input type="text" id="custPickupStreet" placeholder="e.g. 4A Burnham Drive" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Town / City</label>
+                        <input type="text" id="custPickupCity" placeholder="e.g. Bristol" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Postcode</label>
+                        <input type="text" id="custPickupPostcode" placeholder="e.g. BS15 4DY" required>
+                    </div>
+                </div>
+
+                <!-- Destination Address Details -->
+                <div class="form-group">
+                    <label>Destination: House No. & Street / Hotel / Airport</label>
+                    <input type="text" id="custDropoffStreet" placeholder="e.g. 10 Downing Street or Heathrow Terminal 2" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Destination Town / City</label>
+                        <input type="text" id="custDropoffCity" placeholder="e.g. London" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Destination Postcode (Optional)</label>
+                        <input type="text" id="custDropoffPostcode" placeholder="e.g. SW1A 2AA">
+                    </div>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="custName" placeholder="e.g. Valentin Oprea" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="custPhone" placeholder="e.g. 07367 446973" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="custEmail" placeholder="e.g. valentinoprea57@gmail.com" required>
+                </div>
+
+                <div class="payment-info">
+                    💳 <strong>Accepted Payment Methods:</strong> Contactless & Card on board • Bank Transfer • Cash • Business Invoicing
+                </div>
+
+                <button type="submit" class="btn-submit">Confirm Booking on WhatsApp</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/447555447236?text=Hello%20Maryo%20Gold%20Services,%20I%20have%20an%20enquiry%20regarding%20a%20journey." class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
+        💬
+    </a>
+
+    <footer>
+        <p><strong>Maryo Gold Services LTD</strong></p>
+        <p style="margin: 0.5rem 0;">Direct Email: <a href="mailto:Syleboe1234@gmail.com">Syleboe1234@gmail.com</a> | Tel: <a href="tel:+447555447236">+44 7555 447236</a></p>
+        <p>&copy; 2026 Maryo Gold Services LTD. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const allHours = [
+            "00:00", "01:00", "02:00", "03:00", "04:00", "05:00",
+            "06:00", "07:00", "08:00", "09:00", "10:00", "11:00",
+            "12:00", "13:00", "14:00", "15:00", "16:00", "17:00",
+            "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"
+        ];
+
+        let selectedSlot = null;
+
+        const dateInput = document.getElementById('bookingDate');
+        const todayStr = new Date().toISOString().split('T')[0];
+        dateInput.min = todayStr;
+        dateInput.value = todayStr;
+
+        function getBookedSlots() {
+            try {
+                return JSON.parse(localStorage.getItem('mgs_booked_slots') || '{}');
+            } catch (e) {
+                return {};
+            }
+        }
+
+        function markSlotAsBooked(date, time) {
+            const booked = getBookedSlots();
+            if (!booked[date]) booked[date] = [];
+            if (!booked[date].includes(time)) {
+                booked[date].push(time);
+                localStorage.setItem('mgs_booked_slots', JSON.stringify(booked));
+            }
+        }
+
+        function renderSlots() {
+            const grid = document.getElementById('slotsGrid');
+            grid.innerHTML = '';
+            const chosenDate = dateInput.value;
+            const bookedForDate = getBookedSlots()[chosenDate] || [];
+
+            allHours.forEach(hour => {
+                const btn = document.createElement('div');
+                const isBooked = bookedForDate.includes(hour);
+
+                btn.className = 'slot-btn' + (isBooked ? ' booked' : '') + (selectedSlot === hour && !isBooked ? ' active' : '');
+                btn.innerText = hour;
+
+                if (isBooked) {
+                    btn.title = "This time slot is already booked for this date";
+                } else {
+                    btn.onclick = () => {
+                        selectedSlot = hour;
+                        renderSlots();
+                    };
+                }
+                grid.appendChild(btn);
+            });
+        }
+
+        function onDateChanged() {
+            selectedSlot = null;
+            renderSlots();
+        }
+
+        function handleBooking(e) {
+            e.preventDefault();
+            const date = dateInput.value;
+            const passengers = document.getElementById('custPassengers').value;
+            const luggage = document.getElementById('custLuggage').value;
+            const flight = document.getElementById('custFlight').value.trim();
             
+            // Pickup details
+            const pStreet = document.getElementById('custPickupStreet').value.trim();
+            const pCity = document.getElementById('custPickupCity').value.trim();
+            const pPostcode = document.getElementById('custPickupPostcode').value.trim();
+            
+            // Destination details
+            const dStreet = document.getElementById('custDropoffStreet').value.trim();
+            const dCity = document.getElementById('custDropoffCity').value.trim();
+            const dPostcode = document.getElementById('custDropoffPostcode').value.trim();
+
+            // Client details
+            const name = document.getElementById('custName').value.trim();
+            const phone = document.getElementById('custPhone').value.trim();
+            const email = document.getElementById('custEmail').value.trim();
+
+            if (!selectedSlot) {
+                alert('Please select an available time slot between 00:00 and 23:00.');
+                return;
+            }
+
+            markSlotAsBooked(date, selectedSlot);
+
+            let msgText = `🚗 *NEW EXECUTIVE PRIVATE HIRE BOOKING*\n\n` +
+                          `📅 Date: ${date}\n` +
+                          `⏰ Pickup Time Slot: ${selectedSlot}\n` +
+                          `👥 Passengers: ${passengers}\n` +
+                          `🧳 Luggage: ${luggage}\n`;
+
+            if (flight) {
+                msgText += `✈️ Flight No: ${flight}\n`;
+            }
+
+            msgText += `\n📍 *PICKUP ADDRESS*:\n` +
+                       `🏠 Street: ${pStreet}\n` +
+                       `🏙️ Town/City: ${pCity}\n` +
+                       `📮 Postcode: ${pPostcode}\n\n` +
+                       `🏁 *DESTINATION ADDRESS*:\n` +
+                       `🏠 Destination: ${dStreet}\n` +
+                       `🏙️ Town/City: ${dCity}\n` +
+                       (dPostcode ? `📮 Postcode: ${dPostcode}\n\n` : `\n`) +
+                       `👤 *CLIENT DETAILS*:\n` +
+                       `Name: ${name}\n` +
+                       `Phone: ${phone}\n` +
+                       `Email: ${email}`;
+
+            const message = encodeURIComponent(msgText);
+
+            renderSlots();
+            window.open(`https://wa.me/447555447236?text=${message}`, '_blank');
+        }
+
+        renderSlots();
+    </script>
+</body>
+</html>
