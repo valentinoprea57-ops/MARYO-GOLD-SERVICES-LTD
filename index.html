@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maryo Gold Services LTD | Executive Private Hire & Airport Transfers</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { background: #0b0f19; color: #f8fafc; line-height: 1.6; }
+        header { background: #020617; padding: 1.2rem 1.5rem; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; }
+        .logo { font-size: 1.2rem; font-weight: 700; color: #eab308; text-transform: uppercase; letter-spacing: 1px; }
+        .phone-btn { background: #22c55e; color: #fff; padding: 0.5rem 1rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.85rem; }
+        .hero { text-align: center; padding: 3.5rem 1.5rem 2.5rem; max-width: 800px; margin: 0 auto; }
+        .hero h1 { font-size: 2.1rem; margin-bottom: 1rem; color: #ffffff; }
+        .hero p { color: #94a3b8; font-size: 1.05rem; margin-bottom: 2rem; }
+        .cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn { padding: 0.85rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none; display: inline-block; font-size: 0.95rem; }
+        .btn-gold { background: #eab308; color: #000; }
+        .btn-whatsapp { background: #25D366; color: #fff; }
+        .section { max-width: 1000px; margin: 2.5rem auto; padding: 0 1.5rem; }
+        .section h2 { text-align: center; font-size: 1.6rem; margin-bottom: 1.8rem; color: #eab308; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+        .card { background: #131d31; padding: 1.5rem; border-radius: 12px; border: 1px solid #24344d; }
+        .card h3 { margin-bottom: 0.5rem; font-size: 1.15rem; color: #fff; }
+        .card p { color: #94a3b8; font-size: 0.9rem; }
+        .booking-box { background: #131d31; padding: 1.75rem; border-radius: 12px; border: 1px solid #24344d; max-width: 550px; margin: 0 auto; }
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group label { display: block; margin-bottom: 0.4rem; color: #cbd5e1; font-size: 0.85rem; }
+        .form-group input { width: 100%; padding: 0.75rem; border-radius: 6px; border: 1px solid #334155; background: #0b0f19; color: #fff; font-size: 0.95rem; }
+        footer { text-align: center; padding: 2rem 1rem; border-top: 1px solid #1e293b; color: #64748b; font-size: 0.8rem; margin-top: 3rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Maryo Gold Services</div>
+        <a href="tel:07367446973" class="phone-btn">📞 Call Now</a>
+    </header>
+
+    <section class="hero">
+        <h1>Executive Private Hire & Airport Transfers</h1>
+        <p>Reliable, punctual, and comfortable transportation. Nationwide airport transfers, corporate bookings, and long-distance travel across the UK.</p>
+        <div class="cta-group">
+            <a href="tel:07367446973" class="btn btn-gold">Call 07367 446973</a>
+            <a href="https://wa.me/447367446973?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20a%20booking" class="btn btn-whatsapp" target="_blank">WhatsApp Booking</a>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Our Services</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>✈️ Airport Transfers</h3>
+                <p>Heathrow, Gatwick, Bristol, Birmingham and all UK major airports with on-time flight tracking.</p>
+            </div>
+            <div class="card">
+                <h3>💼 Corporate & Executive</h3>
+                <p>Comfortable, premium transport for business meetings, events, and VIP clients.</p>
+            </div>
+            <div class="card">
+                <h3>🛣️ Long Distance Journeys</h3>
+                <p>Direct door-to-door nationwide transfers without stress or train delays.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Request a Journey Quote</h2>
+        <div class="booking-box">
+            <form onsubmit="sendBooking(event)">
+                <div class="form-group">
+                    <label>Pickup Address / Postcode</label>
+                    <input type="text" id="pickup" placeholder="e.g. Bristol City Centre" required>
+                </div>
+                <div class="form-group">
+                    <label>Destination Address / Airport</label>
+                    <input type="text" id="destination" placeholder="e.g. Heathrow Terminal 5" required>
+                </div>
+                <div class="form-group">
+                    <label>Date & Time</label>
+                    <input type="datetime-local" id="datetime" required>
+                </div>
+                <button type="submit" class="btn btn-gold" style="width: 100%; border: none; cursor: pointer; padding: 0.9rem;">Send Quote via WhatsApp</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Maryo Gold Services LTD. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function sendBooking(e) {
+            e.preventDefault();
+            const pickup = document.getElementById('pickup').value;
+            const dest = document.getElementById('destination').value;
+            const dt = document.getElementById('datetime').value;
+            
+            const msg = encodeURIComponent(`Hello! Booking request for Maryo Gold Services:%0A- Pickup: ${pickup}%0A- Destination: ${dest}%0A- Date/Time: ${dt}`);
+            window.open(`https://wa.me/447367446973?text=${msg}`, '_blank');
+        }
+    </script>
+</body>
+</html>
