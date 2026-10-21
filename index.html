@@ -14,13 +14,14 @@
         .contact-chip { background: #1e293b; color: #cbd5e1; padding: 0.45rem 0.9rem; border-radius: 9999px; text-decoration: none; font-size: 0.82rem; border: 1px solid #334155; }
         .phone-btn { background: #22c55e; color: #fff; padding: 0.5rem 1rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.85rem; }
         
-        /* Poza curată în prim-plan (fără text) */
+        /* Poza curată în prim-plan (Mercedes executiv negru) */
         .hero-banner {
             width: 100%;
             height: 380px;
             overflow: hidden;
             border-bottom: 2px solid #eab308;
             position: relative;
+            background: #020617;
         }
         .hero-banner img {
             width: 100%;
@@ -126,12 +127,12 @@
         </div>
     </header>
 
-    <!-- 1. POZA CURATĂ ÎN PRIM-PLAN (FĂRĂ TEXT PE EA) -->
+    <!-- POZA CURATĂ ÎN PRIM-PLAN (MERCEDES CHAUFFEUR EXECUTIVE) -->
     <div class="hero-banner">
-        <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1400&q=80" alt="Executive Chauffeur & Private Hire">
+        <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1400&q=80" alt="Executive Mercedes-Benz Private Hire">
     </div>
 
-    <!-- 2. DETALIILE LA SCROLL ÎN JOS -->
+    <!-- DETALIILE LA SCROLL ÎN JOS -->
     <div class="intro-details">
         <h1>Executive Private Hire & Airport Transfers</h1>
         <p>Reliable, punctual, and comfortable transportation. Nationwide airport transfers, corporate bookings, and long-distance travel across the UK.</p>
@@ -253,22 +254,4 @@
                 btn.innerText = hour;
 
                 if (isBooked) {
-                    btn.title = "This time slot is already booked for this date";
-                } else {
-                    btn.onclick = () => {
-                        selectedSlot = hour;
-                        renderSlots();
-                    };
-                }
-                grid.appendChild(btn);
-            });
-        }
-
-        function onDateChanged() {
-            selectedSlot = null;
-            renderSlots();
-        }
-
-        function handleBooking(e) {
-            e.preventDefault();
-            const date = dateInput.value;
+                    btn.title = "This time slot is already booked
