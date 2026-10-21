@@ -240,7 +240,7 @@
     <section class="section">
         <h2>Book Your Journey</h2>
         <div class="booking-box">
-            <form onsubmit="handleBooking(event)">
+            <form onsubmit="handleBooking(event)" autocomplete="off">
                 
                 <!-- 1. Calendar -->
                 <div class="sub-header">1. Select Date</div>
@@ -280,13 +280,13 @@
 
                 <div class="form-group">
                     <label>Flight Number (Optional for airport arrivals)</label>
-                    <input type="text" id="custFlight" placeholder="e.g. BA0245 or EZY6123">
+                    <input type="text" id="custFlight" placeholder="e.g. BA0245">
                 </div>
 
                 <!-- Pickup Address Details -->
                 <div class="form-group">
                     <label>Pickup: House Number & Street</label>
-                    <input type="text" id="custPickupStreet" placeholder="e.g. 4A Burnham Drive" required>
+                    <input type="text" id="custPickupStreet" placeholder="e.g. 15 Park Street" required>
                 </div>
 
                 <div class="form-row">
@@ -296,14 +296,14 @@
                     </div>
                     <div class="form-group">
                         <label>Postcode</label>
-                        <input type="text" id="custPickupPostcode" placeholder="e.g. BS15 4DY" required>
+                        <input type="text" id="custPickupPostcode" placeholder="e.g. BS1 5PB" required>
                     </div>
                 </div>
 
                 <!-- Destination Address Details -->
                 <div class="form-group">
                     <label>Destination: House No. & Street / Hotel / Airport</label>
-                    <input type="text" id="custDropoffStreet" placeholder="e.g. 10 Downing Street or Heathrow Terminal 2" required>
+                    <input type="text" id="custDropoffStreet" placeholder="e.g. Heathrow Airport Terminal 2" required>
                 </div>
 
                 <div class="form-row">
@@ -313,7 +313,7 @@
                     </div>
                     <div class="form-group">
                         <label>Destination Postcode (Optional)</label>
-                        <input type="text" id="custDropoffPostcode" placeholder="e.g. SW1A 2AA">
+                        <input type="text" id="custDropoffPostcode" placeholder="e.g. TW6 1EW">
                     </div>
                 </div>
 
@@ -321,17 +321,17 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label>Full Name</label>
-                        <input type="text" id="custName" placeholder="e.g. Valentin Oprea" required>
+                        <input type="text" id="custName" placeholder="e.g. John Smith" required>
                     </div>
                     <div class="form-group">
                         <label>Phone Number</label>
-                        <input type="tel" id="custPhone" placeholder="e.g. 07367 446973" required>
+                        <input type="tel" id="custPhone" placeholder="e.g. 07123 456789" required>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label>Email Address</label>
-                    <input type="email" id="custEmail" placeholder="e.g. valentinoprea57@gmail.com" required>
+                    <input type="email" id="custEmail" placeholder="e.g. client@example.com" required>
                 </div>
 
                 <div class="payment-info">
