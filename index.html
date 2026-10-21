@@ -278,15 +278,9 @@
                     </div>
                 </div>
 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Exact Pickup Time</label>
-                        <input type="time" id="custExactTime" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Flight Number (Optional for airport arrivals)</label>
-                        <input type="text" id="custFlight" placeholder="e.g. BA0245 or EZY6123">
-                    </div>
+                <div class="form-group">
+                    <label>Flight Number (Optional for airport arrivals)</label>
+                    <input type="text" id="custFlight" placeholder="e.g. BA0245 or EZY6123">
                 </div>
 
                 <!-- Pickup Address Details -->
@@ -399,8 +393,6 @@
                 } else {
                     btn.onclick = () => {
                         selectedSlot = hour;
-                        // Preia ora aleasa si o seteaza in campul de Exact Time
-                        document.getElementById('custExactTime').value = hour;
                         renderSlots();
                     };
                 }
@@ -418,7 +410,6 @@
             const date = dateInput.value;
             const passengers = document.getElementById('custPassengers').value;
             const luggage = document.getElementById('custLuggage').value;
-            const exactTime = document.getElementById('custExactTime').value;
             const flight = document.getElementById('custFlight').value.trim();
             const street = document.getElementById('custPickupStreet').value.trim();
             const city = document.getElementById('custPickupCity').value.trim();
@@ -437,8 +428,7 @@
 
             let msgText = `🚗 *NEW EXECUTIVE PRIVATE HIRE BOOKING*\n\n` +
                           `📅 Date: ${date}\n` +
-                          `⏰ Time Slot Window: ${selectedSlot}\n` +
-                          `⏱️ Exact Pickup Time: ${exactTime}\n` +
+                          `⏰ Pickup Time Slot: ${selectedSlot}\n` +
                           `👥 Passengers: ${passengers}\n` +
                           `🧳 Luggage: ${luggage}\n`;
 
