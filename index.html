@@ -302,8 +302,19 @@
 
                 <!-- Destination Address Details -->
                 <div class="form-group">
-                    <label>Destination Address / Airport & Terminal</label>
-                    <input type="text" id="custDropoff" placeholder="e.g. Heathrow Airport Terminal 2" required>
+                    <label>Destination: House No. & Street / Hotel / Airport</label>
+                    <input type="text" id="custDropoffStreet" placeholder="e.g. 10 Downing Street or Heathrow Terminal 2" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Destination Town / City</label>
+                        <input type="text" id="custDropoffCity" placeholder="e.g. London" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Destination Postcode (Optional)</label>
+                        <input type="text" id="custDropoffPostcode" placeholder="e.g. SW1A 2AA">
+                    </div>
                 </div>
 
                 <!-- Contact Info -->
@@ -411,10 +422,18 @@
             const passengers = document.getElementById('custPassengers').value;
             const luggage = document.getElementById('custLuggage').value;
             const flight = document.getElementById('custFlight').value.trim();
-            const street = document.getElementById('custPickupStreet').value.trim();
-            const city = document.getElementById('custPickupCity').value.trim();
-            const postcode = document.getElementById('custPickupPostcode').value.trim();
-            const dropoff = document.getElementById('custDropoff').value.trim();
+            
+            // Pickup details
+            const pStreet = document.getElementById('custPickupStreet').value.trim();
+            const pCity = document.getElementById('custPickupCity').value.trim();
+            const pPostcode = document.getElementById('custPickupPostcode').value.trim();
+            
+            // Destination details
+            const dStreet = document.getElementById('custDropoffStreet').value.trim();
+            const dCity = document.getElementById('custDropoffCity').value.trim();
+            const dPostcode = document.getElementById('custDropoffPostcode').value.trim();
+
+            // Client details
             const name = document.getElementById('custName').value.trim();
             const phone = document.getElementById('custPhone').value.trim();
             const email = document.getElementById('custEmail').value.trim();
@@ -437,11 +456,13 @@
             }
 
             msgText += `\n📍 *PICKUP ADDRESS*:\n` +
-                       `🏠 Street: ${street}\n` +
-                       `🏙️ Town/City: ${city}\n` +
-                       `📮 Postcode: ${postcode}\n\n` +
-                       `🏁 *DESTINATION*:\n` +
-                       `📍 ${dropoff}\n\n` +
+                       `🏠 Street: ${pStreet}\n` +
+                       `🏙️ Town/City: ${pCity}\n` +
+                       `📮 Postcode: ${pPostcode}\n\n` +
+                       `🏁 *DESTINATION ADDRESS*:\n` +
+                       `🏠 Destination: ${dStreet}\n` +
+                       `🏙️ Town/City: ${dCity}\n` +
+                       (dPostcode ? `📮 Postcode: ${dPostcode}\n\n` : `\n`) +
                        `👤 *CLIENT DETAILS*:\n` +
                        `Name: ${name}\n` +
                        `Phone: ${phone}\n` +
