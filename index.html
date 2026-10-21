@@ -42,6 +42,13 @@
         .card h3 { margin-bottom: 0.5rem; font-size: 1.15rem; color: #fff; }
         .card p { color: #94a3b8; font-size: 0.9rem; }
 
+        /* Trust Badges */
+        .badges-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+        .badge-box { background: rgba(19, 29, 49, 0.6); border: 1px solid #1e293b; padding: 1rem; border-radius: 10px; text-align: center; }
+        .badge-icon { font-size: 1.5rem; margin-bottom: 0.35rem; display: block; }
+        .badge-title { font-weight: 700; font-size: 0.95rem; color: #fff; margin-bottom: 0.2rem; }
+        .badge-desc { font-size: 0.8rem; color: #94a3b8; }
+
         /* Booking Section */
         .booking-box { background: #131d31; padding: 2rem; border-radius: 14px; border: 1px solid #24344d; max-width: 650px; margin: 0 auto; }
         .sub-header { font-size: 0.95rem; font-weight: 700; color: #eab308; text-transform: uppercase; margin-bottom: 0.75rem; letter-spacing: 0.5px; }
@@ -90,11 +97,38 @@
             opacity: 0.4;
         }
 
-        /* Step 3: Contact Details */
+        /* Step 3: Contact & Journey Details */
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+        @media (max-width: 500px) {
+            .form-row { grid-template-columns: 1fr; }
+        }
         .form-group { margin-bottom: 1.1rem; }
         .form-group label { display: block; margin-bottom: 0.4rem; color: #cbd5e1; font-size: 0.85rem; font-weight: 600; }
-        .form-group input { width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid #334155; background: #0b0f19; color: #fff; font-size: 0.95rem; }
-        .form-group input:focus { border-color: #eab308; outline: none; }
+        .form-group input, .form-group select { 
+            width: 100%; 
+            padding: 0.8rem; 
+            border-radius: 8px; 
+            border: 1px solid #334155; 
+            background: #0b0f19; 
+            color: #fff; 
+            font-size: 0.95rem; 
+            outline: none;
+        }
+        .form-group select { cursor: pointer; }
+        .form-group input:focus, .form-group select:focus { border-color: #eab308; }
+
+        /* Payment methods badge */
+        .payment-info {
+            background: rgba(11, 15, 25, 0.8);
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            font-size: 0.82rem;
+            color: #94a3b8;
+            margin-top: 1rem;
+            margin-bottom: 1.25rem;
+            text-align: center;
+        }
 
         .btn-submit {
             background: #eab308;
@@ -106,10 +140,33 @@
             width: 100%;
             padding: 1rem;
             cursor: pointer;
-            margin-top: 1rem;
             transition: 0.2s;
         }
         .btn-submit:hover { background: #ca8a04; }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25d366;
+            color: #fff;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 28px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
 
         footer { text-align: center; padding: 2.5rem 1rem; border-top: 1px solid #1e293b; color: #64748b; font-size: 0.85rem; margin-top: 3rem; }
         footer a { color: #eab308; text-decoration: none; }
@@ -135,6 +192,7 @@
         <p>Reliable, punctual, and comfortable transportation. Nationwide airport transfers, corporate bookings, and long-distance travel across the UK.</p>
     </section>
 
+    <!-- Services -->
     <section class="section">
         <h2>Our Services</h2>
         <div class="grid">
@@ -149,6 +207,30 @@
             <div class="card">
                 <h3>🛣️ Long Distance Journeys</h3>
                 <p>Direct door-to-door nationwide transfers without stress or train delays.</p>
+            </div>
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="badges-grid">
+            <div class="badge-box">
+                <span class="badge-icon">🛡️</span>
+                <div class="badge-title">Licensed & Insured</div>
+                <div class="badge-desc">Fully compliant UK private hire standards</div>
+            </div>
+            <div class="badge-box">
+                <span class="badge-icon">✈️</span>
+                <div class="badge-title">Flight Monitoring</div>
+                <div class="badge-desc">Free waiting time for flight delays</div>
+            </div>
+            <div class="badge-box">
+                <span class="badge-icon">🏷️</span>
+                <div class="badge-title">Fixed Quotes</div>
+                <div class="badge-desc">Clear pricing with zero hidden surcharges</div>
+            </div>
+            <div class="badge-box">
+                <span class="badge-icon">⭐</span>
+                <div class="badge-title">Premium Comfort</div>
+                <div class="badge-desc">Chauffeur-driven luxury vehicles</div>
             </div>
         </div>
     </section>
@@ -171,33 +253,73 @@
                     <div class="slots-grid" id="slotsGrid"></div>
                 </div>
 
-                <!-- 3. Client Details -->
-                <div class="sub-header">3. Contact & Journey Details</div>
-                <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" id="custName" placeholder="e.g. John Doe" required>
+                <!-- 3. Client & Vehicle Requirements -->
+                <div class="sub-header">3. Journey Details & Requirements</div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Passengers</label>
+                        <select id="custPassengers">
+                            <option value="1 Passenger">1 Passenger</option>
+                            <option value="2 Passengers">2 Passengers</option>
+                            <option value="3 Passengers">3 Passengers</option>
+                            <option value="4 Passengers">4 Passengers</option>
+                            <option value="5-7 Passengers (Executive Van)">5 - 7 Passengers (Executive Van)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Luggage (Large Cases)</label>
+                        <select id="custLuggage">
+                            <option value="Hand luggage only">Hand luggage only</option>
+                            <option value="1 - 2 Large Suitcases">1 - 2 Large Suitcases</option>
+                            <option value="3 - 4 Large Suitcases">3 - 4 Large Suitcases</option>
+                            <option value="5+ Suitcases">5+ Suitcases</option>
+                        </select>
+                    </div>
                 </div>
+
                 <div class="form-group">
-                    <label>Phone Number</label>
-                    <input type="tel" id="custPhone" placeholder="e.g. 07123 456789" required>
+                    <label>Flight Number (Optional for airport arrivals)</label>
+                    <input type="text" id="custFlight" placeholder="e.g. BA0245 or EZY6123">
                 </div>
-                <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" id="custEmail" placeholder="e.g. client@gmail.com" required>
-                </div>
+
                 <div class="form-group">
                     <label>Pickup Location / Postcode</label>
-                    <input type="text" id="custPickup" placeholder="e.g. Bristol City Centre" required>
+                    <input type="text" id="custPickup" placeholder="e.g. Bristol City Centre or BS1 4DJ" required>
                 </div>
                 <div class="form-group">
                     <label>Destination Address / Airport</label>
                     <input type="text" id="custDropoff" placeholder="e.g. Heathrow Terminal 2" required>
                 </div>
 
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="custName" placeholder="e.g. John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="custPhone" placeholder="e.g. 07123 456789" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="custEmail" placeholder="e.g. client@gmail.com" required>
+                </div>
+
+                <div class="payment-info">
+                    💳 <strong>Accepted Payment Methods:</strong> Contactless & Card on board • Bank Transfer • Cash • Business Invoicing
+                </div>
+
                 <button type="submit" class="btn-submit">Confirm Booking on WhatsApp</button>
             </form>
         </div>
     </section>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/447555447236?text=Hello%20Maryo%20Gold%20Services,%20I%20have%20an%20enquiry%20regarding%20a%20journey." class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
+        💬
+    </a>
 
     <footer>
         <p><strong>Maryo Gold Services LTD</strong></p>
@@ -253,52 +375,4 @@
                 if (isBooked) {
                     btn.title = "This time slot is already booked for this date";
                 } else {
-                    btn.onclick = () => {
-                        selectedSlot = hour;
-                        renderSlots();
-                    };
-                }
-                grid.appendChild(btn);
-            });
-        }
-
-        function onDateChanged() {
-            selectedSlot = null;
-            renderSlots();
-        }
-
-        function handleBooking(e) {
-            e.preventDefault();
-            const date = dateInput.value;
-            const name = document.getElementById('custName').value.trim();
-            const phone = document.getElementById('custPhone').value.trim();
-            const email = document.getElementById('custEmail').value.trim();
-            const pickup = document.getElementById('custPickup').value.trim();
-            const dropoff = document.getElementById('custDropoff').value.trim();
-
-            if (!selectedSlot) {
-                alert('Please select an available time slot between 00:00 and 23:00.');
-                return;
-            }
-
-            markSlotAsBooked(date, selectedSlot);
-
-            const message = encodeURIComponent(
-                `🚗 *NEW PRIVATE HIRE BOOKING*\n\n` +
-                `📅 Date: ${date}\n` +
-                `⏰ Time: ${selectedSlot}\n` +
-                `👤 Name: ${name}\n` +
-                `📞 Phone: ${phone}\n` +
-                `✉️ Email: ${email}\n` +
-                `📍 Pickup: ${pickup}\n` +
-                `🏁 Destination: ${dropoff}`
-            );
-
-            renderSlots();
-            window.open(`https://wa.me/447555447236?text=${message}`, '_blank');
-        }
-
-        renderSlots();
-    </script>
-</body>
-</html>
+                    
