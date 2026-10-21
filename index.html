@@ -14,17 +14,26 @@
         .contact-chip { background: #1e293b; color: #cbd5e1; padding: 0.45rem 0.9rem; border-radius: 9999px; text-decoration: none; font-size: 0.82rem; border: 1px solid #334155; }
         .phone-btn { background: #22c55e; color: #fff; padding: 0.5rem 1rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.85rem; }
         
-        /* Zona Hero cu imagine de fundal Chauffeur / Van executiv */
-        .hero { 
-            text-align: center; 
-            padding: 4.5rem 1.5rem 4rem; 
-            background: linear-gradient(rgba(11, 15, 25, 0.75), rgba(11, 15, 25, 0.9)),
-                        url('https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1200&q=80') center center / cover no-repeat;
-            border-bottom: 1px solid #1e293b;
+        /* Poza curată în prim-plan (fără text) */
+        .hero-banner {
+            width: 100%;
+            height: 380px;
+            overflow: hidden;
+            border-bottom: 2px solid #eab308;
+            position: relative;
         }
-        .hero-inner { max-width: 800px; margin: 0 auto; }
-        .hero h1 { font-size: 2.2rem; margin-bottom: 1rem; color: #ffffff; text-shadow: 0 2px 8px rgba(0,0,0,0.8); }
-        .hero p { color: #e2e8f0; font-size: 1.1rem; text-shadow: 0 1px 6px rgba(0,0,0,0.8); }
+        .hero-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        /* Detaliile de sub poză */
+        .intro-details { text-align: center; padding: 3rem 1.5rem 1.5rem; max-width: 800px; margin: 0 auto; }
+        .intro-details h1 { font-size: 2.2rem; margin-bottom: 1rem; color: #ffffff; }
+        .intro-details p { color: #94a3b8; font-size: 1.1rem; }
 
         .section { max-width: 1000px; margin: 2.5rem auto; padding: 0 1.5rem; }
         .section h2 { text-align: center; font-size: 1.6rem; margin-bottom: 1.8rem; color: #eab308; }
@@ -117,13 +126,16 @@
         </div>
     </header>
 
-    <!-- Secțiunea cu fundalul de sus -->
-    <section class="hero">
-        <div class="hero-inner">
-            <h1>Executive Private Hire & Airport Transfers</h1>
-            <p>Reliable, punctual, and comfortable transportation. Nationwide airport transfers, corporate bookings, and long-distance travel across the UK.</p>
-        </div>
-    </section>
+    <!-- 1. POZA CURATĂ ÎN PRIM-PLAN (FĂRĂ TEXT PE EA) -->
+    <div class="hero-banner">
+        <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1400&q=80" alt="Executive Chauffeur & Private Hire">
+    </div>
+
+    <!-- 2. DETALIILE LA SCROLL ÎN JOS -->
+    <div class="intro-details">
+        <h1>Executive Private Hire & Airport Transfers</h1>
+        <p>Reliable, punctual, and comfortable transportation. Nationwide airport transfers, corporate bookings, and long-distance travel across the UK.</p>
+    </div>
 
     <section class="section">
         <h2>Our Services</h2>
@@ -260,35 +272,3 @@
         function handleBooking(e) {
             e.preventDefault();
             const date = dateInput.value;
-            const name = document.getElementById('custName').value.trim();
-            const phone = document.getElementById('custPhone').value.trim();
-            const email = document.getElementById('custEmail').value.trim();
-            const pickup = document.getElementById('custPickup').value.trim();
-            const dropoff = document.getElementById('custDropoff').value.trim();
-
-            if (!selectedSlot) {
-                alert('Please select an available time slot between 00:00 and 23:00.');
-                return;
-            }
-
-            markSlotAsBooked(date, selectedSlot);
-
-            const message = encodeURIComponent(
-                `🚗 *NEW PRIVATE HIRE BOOKING*\n\n` +
-                `📅 Date: ${date}\n` +
-                `⏰ Time: ${selectedSlot}\n` +
-                `👤 Name: ${name}\n` +
-                `📞 Phone: ${phone}\n` +
-                `✉️ Email: ${email}\n` +
-                `📍 Pickup: ${pickup}\n` +
-                `🏁 Destination: ${dropoff}`
-            );
-
-            renderSlots();
-            window.open(`https://wa.me/447367446973?text=${message}`, '_blank');
-        }
-
-        renderSlots();
-    </script>
-</body>
-</html>
