@@ -12,15 +12,10 @@
         .header-contacts { display: flex; gap: 0.5rem; align-items: center; }
         .contact-chip { background: #1e293b; color: #cbd5e1; padding: 0.45rem 0.9rem; border-radius: 9999px; text-decoration: none; font-size: 0.82rem; border: 1px solid #334155; }
         .phone-btn { background: #22c55e; color: #fff; padding: 0.5rem 1rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.85rem; }
-        .hero { text-align: center; padding: 3.5rem 1.5rem 2.5rem; max-width: 800px; margin: 0 auto; }
-        .hero h1 { font-size: 2.1rem; margin-bottom: 1rem; color: #ffffff; }
-        .hero p { color: #94a3b8; font-size: 1.05rem; margin-bottom: 2rem; }
-        .cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-        .btn { padding: 0.85rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none; display: inline-block; font-size: 0.95rem; }
-        .btn-gold { background: #eab308; color: #000; }
-        .btn-whatsapp { background: #25D366; color: #fff; }
-        .btn-email { background: #334155; color: #fff; border: 1px solid #475569; }
-        .section { max-width: 1000px; margin: 2.5rem auto; padding: 0 1.5rem; }
+        .hero { text-align: center; padding: 4rem 1.5rem 2rem; max-width: 800px; margin: 0 auto; }
+        .hero h1 { font-size: 2.2rem; margin-bottom: 1.2rem; color: #ffffff; }
+        .hero p { color: #94a3b8; font-size: 1.1rem; }
+        .section { max-width: 1000px; margin: 3rem auto; padding: 0 1.5rem; }
         .section h2 { text-align: center; font-size: 1.6rem; margin-bottom: 1.8rem; color: #eab308; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
         .card { background: #131d31; padding: 1.5rem; border-radius: 12px; border: 1px solid #24344d; }
@@ -30,6 +25,7 @@
         .form-group { margin-bottom: 1.2rem; }
         .form-group label { display: block; margin-bottom: 0.4rem; color: #cbd5e1; font-size: 0.85rem; }
         .form-group input { width: 100%; padding: 0.75rem; border-radius: 6px; border: 1px solid #334155; background: #0b0f19; color: #fff; font-size: 0.95rem; }
+        .btn-gold { background: #eab308; color: #000; border-radius: 8px; font-weight: 600; text-decoration: none; display: inline-block; }
         footer { text-align: center; padding: 2.5rem 1rem; border-top: 1px solid #1e293b; color: #64748b; font-size: 0.85rem; margin-top: 3rem; }
         footer a { color: #eab308; text-decoration: none; }
     </style>
@@ -47,11 +43,6 @@
     <section class="hero">
         <h1>Executive Private Hire & Airport Transfers</h1>
         <p>Reliable, punctual, and comfortable transportation. Nationwide airport transfers, corporate bookings, and long-distance travel across the UK.</p>
-        <div class="cta-group">
-            <a href="tel:07367446973" class="btn btn-gold">Call 07367 446973</a>
-            <a href="https://wa.me/447367446973?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20a%20booking" class="btn btn-whatsapp" target="_blank">WhatsApp Booking</a>
-            <a href="mailto:Syleboe1234@gmail.com?subject=Private%20Hire%20Booking%20Inquiry" class="btn btn-email">Email Us</a>
-        </div>
     </section>
 
     <section class="section">
@@ -88,7 +79,7 @@
                     <label>Date & Time</label>
                     <input type="datetime-local" id="datetime" required>
                 </div>
-                <button type="submit" class="btn btn-gold" style="width: 100%; border: none; cursor: pointer; padding: 0.9rem; font-size: 1rem;">Send Quote via WhatsApp</button>
+                <button type="submit" class="btn-gold" style="width: 100%; border: none; cursor: pointer; padding: 0.9rem; font-size: 1rem;">Send Quote via WhatsApp</button>
             </form>
         </div>
     </section>
