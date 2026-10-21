@@ -14,9 +14,17 @@
         .contact-chip { background: #1e293b; color: #cbd5e1; padding: 0.45rem 0.9rem; border-radius: 9999px; text-decoration: none; font-size: 0.82rem; border: 1px solid #334155; }
         .phone-btn { background: #22c55e; color: #fff; padding: 0.5rem 1rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.85rem; }
         
-        .hero { text-align: center; padding: 3.5rem 1.5rem 2rem; max-width: 800px; margin: 0 auto; }
-        .hero h1 { font-size: 2.2rem; margin-bottom: 1rem; color: #ffffff; }
-        .hero p { color: #94a3b8; font-size: 1.1rem; }
+        /* Zona Hero cu imagine de fundal Chauffeur / Van executiv */
+        .hero { 
+            text-align: center; 
+            padding: 4.5rem 1.5rem 4rem; 
+            background: linear-gradient(rgba(11, 15, 25, 0.75), rgba(11, 15, 25, 0.9)),
+                        url('https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1200&q=80') center center / cover no-repeat;
+            border-bottom: 1px solid #1e293b;
+        }
+        .hero-inner { max-width: 800px; margin: 0 auto; }
+        .hero h1 { font-size: 2.2rem; margin-bottom: 1rem; color: #ffffff; text-shadow: 0 2px 8px rgba(0,0,0,0.8); }
+        .hero p { color: #e2e8f0; font-size: 1.1rem; text-shadow: 0 1px 6px rgba(0,0,0,0.8); }
 
         .section { max-width: 1000px; margin: 2.5rem auto; padding: 0 1.5rem; }
         .section h2 { text-align: center; font-size: 1.6rem; margin-bottom: 1.8rem; color: #eab308; }
@@ -109,9 +117,12 @@
         </div>
     </header>
 
+    <!-- Secțiunea cu fundalul de sus -->
     <section class="hero">
-        <h1>Executive Private Hire & Airport Transfers</h1>
-        <p>Reliable, punctual, and comfortable transportation. Nationwide airport transfers, corporate bookings, and long-distance travel across the UK.</p>
+        <div class="hero-inner">
+            <h1>Executive Private Hire & Airport Transfers</h1>
+            <p>Reliable, punctual, and comfortable transportation. Nationwide airport transfers, corporate bookings, and long-distance travel across the UK.</p>
+        </div>
     </section>
 
     <section class="section">
@@ -185,7 +196,6 @@
     </footer>
 
     <script>
-        // All 24 hourly slots
         const allHours = [
             "00:00", "01:00", "02:00", "03:00", "04:00", "05:00",
             "06:00", "07:00", "08:00", "09:00", "10:00", "11:00",
@@ -195,7 +205,6 @@
 
         let selectedSlot = null;
 
-        // Set today as minimum selectable date
         const dateInput = document.getElementById('bookingDate');
         const todayStr = new Date().toISOString().split('T')[0];
         dateInput.min = todayStr;
@@ -262,10 +271,8 @@
                 return;
             }
 
-            // Blochează slotul pentru această dată
             markSlotAsBooked(date, selectedSlot);
 
-            // Mesaj structurat pentru WhatsApp
             const message = encodeURIComponent(
                 `🚗 *NEW PRIVATE HIRE BOOKING*\n\n` +
                 `📅 Date: ${date}\n` +
@@ -281,7 +288,6 @@
             window.open(`https://wa.me/447367446973?text=${message}`, '_blank');
         }
 
-        // Inițializare sloturi la deschidere
         renderSlots();
     </script>
 </body>
